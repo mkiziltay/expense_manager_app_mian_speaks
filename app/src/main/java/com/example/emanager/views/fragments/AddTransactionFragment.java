@@ -141,6 +141,11 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
         });
 
         binding.saveTransactionBtn.setOnClickListener(c-> {
+            if (transaction.getType()==null) {
+                Helper.showToast(((MainActivity) getContext()),"Select transaction type");
+                return;
+            }
+            
             double amount = Double.parseDouble(binding.amount.getText().toString());
             String note = binding.note.getText().toString();
 
